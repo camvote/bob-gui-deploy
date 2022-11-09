@@ -1,7 +1,8 @@
 # Ignore the log file
 log.txt
+bob/
 
 # Ignore the instantiated copy of the config template
-.config.sh
+config.sh
 
 

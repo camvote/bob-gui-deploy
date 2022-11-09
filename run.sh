@@ -16,6 +16,7 @@ fi
 
 # Bomb out if something goes wrong
 set -e
+set -x
 
 # Get the script directory see: http://stackoverflow.com/a/246128/180733
 # The second single line solution from that page is probably good enough as it is unlikely that this script itself will be symlinked.
@@ -24,7 +25,7 @@ SCRIPTDIRECTORY=$DIR
 cd "${SCRIPTDIRECTORY}"
 
 # Load the config file
-configFile=./.config.sh
+configFile=./config.sh
 if [ ! -x ./${configFile} ]; then
 	echo "ERROR: The config file, ${configFile}, does not exist or is not excutable - copy your own based on the ${configFile}.template file." 1>&2
 	exit 1

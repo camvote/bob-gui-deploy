@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 # This script is idempotent - it can be safely re-run without destroying existing data
 
 
@@ -181,8 +181,8 @@ else
 fi
 
 # Create a vhost for the website if it doesn't exist already
-vhostFile="${apacheVhostsConfigDirectory}/${domainName}.conf"
-installationRoot="${apacheVhostsRoot}/${domainName}"
+vhostFile="${apacheVhostsConfigDirectory}/camvote.conf"
+installationRoot="${apacheVhostsRoot}/camvote"
 if [ ! -r ${vhostFile} ]; then
 	cat > ${vhostFile} << EOF
 ## Voting website
@@ -236,9 +236,9 @@ php_admin_value memory_limit 512M
 	
 	# SSL
 	SSLEngine on
-	SSLCertificateFile       ${apacheSslCrtDirectory}/${domainName}.crt
-	SSLCertificateKeyFile    ${apacheSslKeyDirectory}/${domainName}.key
-	${apacheSslCertificateChainDirective}
+	SSLCertificateFile       ${sslCertificateCrt} #${apacheSslCrtDirectory}/${domainName}.crt
+	SSLCertificateKeyFile    ${sslCertificateKey} #${apacheSslKeyDirectory}/${domainName}.key
+	SSLCertificateChainFile  ${sslCertificateChain} # ${apacheSslCertificateChainDirective}
 	
 	# Authentication
 	<Location />
@@ -295,7 +295,7 @@ a2enmod rewrite
 a2enmod macro
 
 # Enable the site and restart
-a2ensite www.vote.cusu.cam.ac.uk
+a2ensite iris.mxbi.net
 
 # Create a group for web editors, who can edit the files
 if ! grep -i "^${webEditorsGroup}\b" /etc/group > /dev/null 2>&1 ; then

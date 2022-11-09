@@ -12,15 +12,15 @@ apt-get -y install php7.2-mbstring
 chown "${apacheUser}" "${installationRoot}"/bob-gui/controlpanel/logfile.txt
 
 # Copy in the providers (directory) API
-if [ ! -r "${providersApiFile}" ] ; then
-	echo "ERROR: The providers API file is not present"
-	exit 1
-fi
-if [ ! -e "${installationRoot}"/bob-gui/controlpanel/providers.php ] ; then
-	cp "${providersApiFile}" "${installationRoot}"/bob-gui/controlpanel/providers.php
-	chown "${apacheUser}"."${webEditorsGroup}" "${providersApiFile}"
-	chmod g+rw "${providersApiFile}"
-fi
+#if [ ! -r "${providersApiFile}" ] ; then
+#	echo "ERROR: The providers API file is not present"
+#	exit 1
+#fi
+#if [ ! -e "${installationRoot}"/bob-gui/controlpanel/providers.php ] ; then
+#	cp "${providersApiFile}" "${installationRoot}"/bob-gui/controlpanel/providers.php
+#	chown "${apacheUser}"."${webEditorsGroup}" "${providersApiFile}"
+#	chmod g+rw "${providersApiFile}"
+#fi
 
 # Limit to specific users by adding an .htaccess file
 if [ -n "$controlPanelOnlyUsers" ]; then

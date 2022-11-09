@@ -1,0 +1,11 @@
+Host git-bob
+	Hostname github.com
+	IdentityFile /home/user/.ssh/bob
+
+Host git-bob-gui
+	Hostname github.com
+	IdentityFile /home/user/.ssh/bob-gui
+
+Host git-bob-gui-deploy
+	Hostname github.com
+	IdentityFile /home/user/.ssh/bob-gui-deploy

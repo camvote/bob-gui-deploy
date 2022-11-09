@@ -8,7 +8,7 @@
 # Add the BOB software (the native voting component, without any setup management)
 if [ ! -d ${installationRoot}/bob ] ; then
 	cd "${installationRoot}"
-	git clone https://github.com/cusu/bob.git
+	git clone https://github.com/camvote/bob.git
 	cd "${SCRIPTDIRECTORY}"
 fi
 
